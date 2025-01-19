@@ -1,7 +1,7 @@
 import datetime
 from unittest import mock
 
-from dateutil.tz.tz import tzutc
+# from dateutil.tz.tz import tzutc
 from dateutil.tz import tzlocal
 
 from bugwarrior.collect import TaskConstructor
@@ -200,6 +200,7 @@ class TestAzureDevopsService(AbstractServiceTest, ServiceTest):
             "priority": "M",
             "project": None,
             "annotations": [],
+            "due": None,
             "adonamespace": "test_organization\\test_project",
             "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzlocal()),
             "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzlocal()),
@@ -230,7 +231,8 @@ class TestAzureDevopsService(AbstractServiceTest, ServiceTest):
             "adoremainingwork": None,
             "adoparent": None,
             "adonamespace": "test_organization\\test_project",
-            "description": '(bw)Impediment#1 - Example Title .. https://dev.azure.com/test_organization/c2957126-cdef-4f9a-bcc8-09323d1b7095/_workitems/edit/1',  # noqa: E501
+            "description": '(bw) Impediment #1 -  Example Title',  # noqa: E501
+            "due": None,
             "tags": []
         }
         issue = next(self.service.issues())
@@ -254,7 +256,8 @@ class TestAzureDevopsService(AbstractServiceTest, ServiceTest):
             "adoremainingwork": None,
             "adoparent": None,
             "adonamespace": "test_organization\\test_project",
-            "description": '(bw)Impediment#1 - Example Title .. https://dev.azure.com/test_organization/c2957126-cdef-4f9a-bcc8-09323d1b7095/_workitems/edit/1',  # noqa: E501
+            "description": '(bw) Impediment #1 -  Example Title',  # noqa: E501
+            "due": None,
             "tags": []
         }
         service = self.get_service(config_overrides={'wiql_filter': 'something'})

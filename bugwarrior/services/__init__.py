@@ -172,7 +172,7 @@ class Issue(abc.ABC):
         """
         if date:
             date = parse_date(date)
-            if not date.tzinfo or timezone =="":
+            if not date.tzinfo or timezone == "":
                 if timezone == '':
                     tzinfo = tzlocal()
                 else:
