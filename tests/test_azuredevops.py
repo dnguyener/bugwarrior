@@ -2,6 +2,7 @@ import datetime
 from unittest import mock
 
 from dateutil.tz.tz import tzutc
+from dateutil.tz import tzlocal
 
 from bugwarrior.collect import TaskConstructor
 from bugwarrior.services.azuredevops import (
@@ -200,8 +201,10 @@ class TestAzureDevopsService(AbstractServiceTest, ServiceTest):
             "project": None,
             "annotations": [],
             "adonamespace": "test_organization\\test_project",
-            "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzutc()),
-            "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzutc()),
+            "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzlocal()),
+            "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzlocal()),
+            # "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzutc()),
+            # "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzutc()),
             "adoactivity": "",
             "adoremainingwork": None,
             "adoparent": None,
@@ -214,8 +217,8 @@ class TestAzureDevopsService(AbstractServiceTest, ServiceTest):
             "project": None,
             "priority": "M",
             "annotations": [],
-            "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzutc()),
-            "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzutc()),
+            "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzlocal()),
+            "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzlocal()),
             "adotitle": "Example Title",
             "adodescription": " This Description has some html in it ",
             "adoid": 1,
@@ -238,8 +241,8 @@ class TestAzureDevopsService(AbstractServiceTest, ServiceTest):
             "project": None,
             "priority": "M",
             "annotations": [],
-            "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzutc()),
-            "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzutc()),
+            "entry": datetime.datetime(2020, 7, 8, 17, 31, 46, 493000, tzinfo=tzlocal()),
+            "end": datetime.datetime(2020, 7, 8, 19, 55, 46, 113000, tzinfo=tzlocal()),
             "adotitle": "Example Title",
             "adodescription": " This Description has some html in it ",
             "adoid": 1,
