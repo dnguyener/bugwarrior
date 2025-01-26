@@ -114,6 +114,11 @@ class AzureDevopsIssue(Issue):
     PARENT = "adoparent"
     NAMESPACE = "adonamespace"
     DUE = "adodue"
+    ITERATIONPATH = "adoiterationpath"
+    ITERATIONLEVELONE = "adoiterationlevelone"
+    ITERATIONLEVELTWO = "adoiterationleveltwo"
+    ITERATIONLEVELTHREE = "adoiterationlevelthree"
+    STATE = "adostate"
 
     UDAS = {
         TITLE: {"type": "string", "label": "Azure Devops Title"},
@@ -131,6 +136,10 @@ class AzureDevopsIssue(Issue):
         PARENT: {"type": "string", "label": "Azure Devops Parent Work Item Name"},
         NAMESPACE: {"type": "string", "label": "Azure Devops Namespace"},
         DUE: {"type": "string", "label": "Azure Devops due date"},
+        ITERATIONPATH: {"type": "string", "label": "Azure Iteration Path"},
+        ITERATIONLEVELONE: {"type": "string", "label": "Azure Iteration Path One"},
+        ITERATIONLEVELTWO: {"type": "string", "label": "Azure Iteration Path Two"},
+        ITERATIONLEVELTHREE: {"type": "string", "label": "Azure Iteration Path Three"},
     }
     UNIQUE_KEY = (URL,)
 
@@ -173,7 +182,12 @@ class AzureDevopsIssue(Issue):
             "due": self.parse_date(
                 self.record.get("fields", {}).get("Microsoft.VSTS.Scheduling.DueDate"), timezone=""
             ),
-
+            self.ITERATIONPATH: self.record["fields"]["System.IterationPath"],
+            self.ITERATIONLEVELONE: self.record.get("fields").get("System.IterationLevel1", ""),
+            self.ITERATIONLEVELTWO: self.record.get("fields").get("System.IterationLevel2", ""),
+            self.ITERATIONLEVELTHREE: self.record.get("fields").get("System.IterationLevel3", ""),
+            self.ITERATIONLEVELTHREE: self.record.get("fields").get("System.IterationLevel3", ""),
+            self.STATE: self.record.get("fields").get("System.State", "")
         }
 
     def get_default_description(self):
